@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Masala | Traditional Soul, Urban Style</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff6b35; /* Spicy Orange */
+            --dark: #1a1a1a;
+            --light: #f4f4f4;
+            --grey: #2d2d2d;
+        }
+
+        /* --- Global Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            background: rgba(0,0,0,0.9);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 50vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                        url('https://images.unsplash.com/photo-1585932231552-05b710c90d99?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #ddd;
+        }
+
+        /* --- Menu Section --- */
+        .menu-container {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 10px auto;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .menu-item {
+            background: var(--grey);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .menu-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .menu-info h3 {
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .order-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .order-btn:hover {
+            background: #e55a2b;
+        }
+
+        /* --- CUSTOMIZED CHATBOT STYLES --- */
+        /* --- CUSTOMIZED CHATBOT STYLES --- */
+df-messenger {
+    /* Sizing - Reduced further for a compact look */
+    --df-messenger-chat-window-height: 350px;
+    --df-messenger-chat-window-width: 280px;
+
+    /* Branding Colors */
+    --df-messenger-button-titlebar-color: #ff6b35; /* Orange Header */
+    --df-messenger-chat-background-color: #1a1a1a; /* Black Background */
+    --df-messenger-font-color: #000000;            /* Text color inside bubbles */
+
+    /* Message Bubble Customization */
+    --df-messenger-bot-message: #ff6b35;           /* Orange background for Urbie's replies */
+    --df-messenger-user-message: #ffffff;          /* White background for user's text */
+    --df-messenger-send-icon: #ff6b35;             /* Orange send button */
+
+    position: fixed;
+    bottom: 85px;
+    right: 20px;
+    display: none; /* Controlled by the JS toggle function */
+    z-index: 10000;
+}
+
+        /* Custom Toggle Button */
+        .chat-toggle-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: var(--primary);
+            color: #000;
+            border: 2px solid #000;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            z-index: 10001;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chat-toggle-btn:hover {
+            transform: scale(1.05);
+            background: #000;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #111;
+            margin-top: 2rem;
+            color: #777;
+        }
+
+        /* Responsive Mobile Adjustment */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            df-messenger {
+                --df-messenger-chat-window-width: 280px;
+            }
+        }
+    </style>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Urban Masala</div>
+        <div class="nav-links">Tasty • Fast • Reliable</div>
+    </nav>
+
+    <header class="hero">
+        <h1>Deliciously Urban.</h1>
+        <p>Your favorite street food, reimagined.</p>
+    </header>
+
+    <section class="menu-container">
+        <h2 class="section-title">Our Menu</h2>
+
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="Assets/PavBhaji.png" alt="Pav Bhaji" class="menu-img">
+                <div class="menu-info">
+                    <h3>Pav Bhaji</h3>
+                    <span class="price">$6.00</span>
+                    <button class="order-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <img src="Assets/CholeBhature.png" alt="Chole Bhature" class="menu-img">
+                <div class="menu-info">
+                    <h3>Chole Bhature</h3>
+                    <span class="price">$7.00</span>
+                    <button class="order-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=500&q=80" alt="Pizza" class="menu-img">
+                <div class="menu-info">
+                    <h3>Urban Fusion Pizza</h3>
+                    <span class="price">$8.00</span>
+                    <button class="order-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=500&q=80" alt="Mango Lassi" class="menu-img">
+                <div class="menu-info">
+                    <h3>Mango Lassi</h3>
+                    <span class="price">$5.00</span>
+                    <button class="order-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <img src="Assets/MasalaDosa.png" alt="Masala Dosa" class="menu-img">
+                <div class="menu-info">
+                    <h3>Masala Dosa</h3>
+                    <span class="price">$6.00</span>
+                    <button class="order-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <img src="Assets/Biriyani.png" alt="Biryani" class="menu-img">
+                <div class="menu-info">
+                    <h3>Vegetable Biryani</h3>
+                    <span class="price">$9.00</span>
+                    <button class="order-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <img src="Assets/VadaPav.png" alt="Vada Pav" class="menu-img">
+                <div class="menu-info">
+                    <h3>Vada Pav</h3>
+                    <span class="price">$4.00</span>
+                    <button class="order-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <img src="Assets/Rava.png" alt="Rava Dosa" class="menu-img">
+                <div class="menu-info">
+                    <h3>Rava Dosa</h3>
+                    <span class="price">$7.00</span>
+                    <button class="order-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <img src="Assets/Samosa.png" alt="Samosa" class="menu-img">
+                <div class="menu-info">
+                    <h3>Classic Samosa</h3>
+                    <span class="price">$5.00</span>
+                    <button class="order-btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Urban Masala. All Rights Reserved.</p>
+    </footer>
+
+    <button class="chat-toggle-btn" onclick="toggleChat()">
+        <span id="btn-icon"></span> <span id="btn-text">Chat with Urbie</span>
+    </button>
+
+    <df-messenger
+      intent="WELCOME"
+      chat-title="Urbie | Urban Masala"
+      agent-id="d269570d-95a3-4674-b081-9e3b7b75b63c"
+      language-code="en">
+    </df-messenger>
+
+    <script>
+    function toggleChat() {
+        const chat = document.querySelector("df-messenger");
+        const btnText = document.getElementById("btn-text");
+        const btnIcon = document.getElementById("btn-icon");
+
+        if (chat.style.display === "none" || chat.style.display === "") {
+            chat.style.display = "block";
+            btnText.innerText = "Close Chat";
+            btnIcon.innerText = "✖";
+        } else {
+            chat.style.display = "none";
+            btnText.innerText = "Chat with Urbie";
+            btnIcon.innerText = "💬";
+        }
+    }
+    </script>
+
+</body>
+</html>
